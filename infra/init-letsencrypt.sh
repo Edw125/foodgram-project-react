@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(51.250.21.79 foodgram.servehttp.com)
+domains=(foodgram.servehttp.com)
 rsa_key_size=4096
 data_path="./data/certbot"
 email="kt215n@gmail.com" # Adding a valid address is strongly recommended
