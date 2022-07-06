@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv(
     default='django-insecure-@)qpg$$9wzoc0&256lt2qc1_a%^l)lj&b^+52j3dddq3hc5)_e')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(' ')
 
@@ -38,6 +38,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://*localhost',
     'http://*foodgram.servehttp.com',
     'https://*foodgram.servehttp.com',
+    'http://*51.250.21.79',
+    'https://*51.250.21.79',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
