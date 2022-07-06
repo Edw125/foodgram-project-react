@@ -74,7 +74,7 @@ jobs:
           context: ./frontend/
           file: ./frontend/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/foodgram_frontend:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/foodgram_frontend:v1
 
   deploy:
     if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
@@ -95,7 +95,7 @@ jobs:
             sudo docker-compose rm backend
             sudo docker-compose rm frontend
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram_backend:latest
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram_frontend:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram_frontend:v1
             sudo rm .env
             touch .env
             echo SECRET_KEY='${{ secrets.SECRET_KEY }}' >> .env  
