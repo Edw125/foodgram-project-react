@@ -10,7 +10,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 
-from foodgram.settings import MEDIA_ROOT
+from backend.settings import MEDIA_ROOT
 from recipes.models import (Favorites, Ingredient, IngredientAmount, Recipe,
                             ShoppingCart, Tag)
 from .filters import IngredientSearchFilter, RecipeFilter

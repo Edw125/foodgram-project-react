@@ -3,7 +3,7 @@ import os
 
 from django.test import TestCase
 
-from foodgram.settings import MEDIA_ROOT
+from backend.settings import MEDIA_ROOT
 from recipes.models import Tag, Ingredient, Recipe, IngredientAmount
 from users.models import User
 

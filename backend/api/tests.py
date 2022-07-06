@@ -4,7 +4,7 @@ from http import HTTPStatus
 
 from rest_framework.test import APIClient, APITestCase
 
-from foodgram.settings import MEDIA_ROOT
+from backend.settings import MEDIA_ROOT
 from users.models import User
 from recipes.models import (Ingredient, IngredientAmount, Recipe,
                             Tag, Favorites, ShoppingCart)
