@@ -33,7 +33,7 @@ services:
     depends_on:
       - frontend
   frontend:
-    image: edw125/foodgram_frontend:v1
+    image: edw125/foodgram_frontend:latest
     volumes:
       - ../frontend/:/app/result_build/
 volumes:
