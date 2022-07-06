@@ -3,7 +3,6 @@ from http import HTTPStatus
 
 from rest_framework.test import APIClient, APITestCase
 
-from api.serializers import ShortRecipeSerializer
 from recipes.models import IngredientAmount, Recipe, Ingredient, Tag
 from users.models import User, Follow
 
