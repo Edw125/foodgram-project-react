@@ -37,7 +37,6 @@ services:
     restart: always
     depends_on:
       - frontend
-    entrypoint: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
 
   certbot:
     container_name: service_certbot
@@ -48,7 +47,6 @@ services:
     restart: always
     depends_on:
       - nginx
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
   frontend:
     image: edw125/foodgram_frontend:v1
