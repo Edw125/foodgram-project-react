@@ -107,6 +107,12 @@ docker-compose exec backend python manage.py createsuperuser
 ```bash
 docker-compose exec backend python manage.py collectstatic --noinput
 ```
+* Дополнительные команды очистки докера:
+```bash
+docker stop $(docker ps -aq) && docker rm $(docker ps -aq)
+docker rmi $(docker images -a -q)
+docker volume prune
+```
 
 ## Авторы
 https://github.com/Edw125 -   Бэкенд и деплой сервиса Foodgram
