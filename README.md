@@ -113,6 +113,17 @@ docker stop $(docker ps -aq) && docker rm $(docker ps -aq)
 docker rmi $(docker images -a -q)
 docker volume prune
 ```
+* Как установить сертификаты SSL:
+Скопировать файл **init-letsencrypt.sh** на сервер в домашнюю директорию и вставить свои данные (сервер, почта),
+либо запустить на сервере команду создания **init-letsencrypt.sh** 
+```bash
+curl -L https://raw.githubusercontent.com/wmnnd/nginx-certbot/master/init-letsencrypt.sh > init-letsencrypt.sh
+```
+После того, как все этапы воркфлоу выполнятся, подключить SSL, запустив файл **init-letsencrypt.sh**
+```bash
+./init-letsencrypt.sh
+```
+Готово! 
 
 ## Авторы
 https://github.com/Edw125 -   Бэкенд и деплой сервиса Foodgram
