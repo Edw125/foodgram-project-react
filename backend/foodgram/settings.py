@@ -36,8 +36,8 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(' ')
 CSRF_TRUSTED_ORIGINS = [
     'http://*localhost',
     'https://*localhost',
-    'http://*foodgram.sytes.net',
-    'https://*foodgram.sytes.net',
+    'http://*foodgram.servehttp.com',
+    'https://*foodgram.servehttp.com',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
