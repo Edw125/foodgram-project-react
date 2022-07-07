@@ -106,28 +106,6 @@ class IngredientAmount(models.Model):
         )
 
 
-class Subscription(models.Model):
-    subscriber = models.ForeignKey(
-        User, on_delete=models.CASCADE,
-        related_name='subscriber',
-        verbose_name='Пользователь'
-    )
-    author = models.ForeignKey(
-        User, on_delete=models.CASCADE,
-        related_name='subscription',
-        verbose_name='Автор рецепта'
-    )
-
-    class Meta:
-        verbose_name = 'Подписка'
-        verbose_name_plural = 'Подписки'
-        constraints = (
-            models.UniqueConstraint(
-                fields=['subscriber', 'author'], name='unique subscription'
-            ),
-        )
-
-
 class Favorites(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE,
