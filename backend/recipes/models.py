@@ -6,7 +6,7 @@ from users.models import User
 
 class Tag(models.Model):
     name = models.CharField('Название', max_length=50)
-    hex_color = models.CharField('Цвет', max_length=7, default="#ffffff")
+    hex_color = models.CharField('Цвет', max_length=7)
     slug = models.SlugField('Адрес', max_length=200)
 
     class Meta:
