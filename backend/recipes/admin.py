@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from backend.settings import VALUE_DISPLAY
+
 from .models import (Favorites, Ingredient, IngredientAmount, Recipe,
                      ShoppingCart, Tag)
 

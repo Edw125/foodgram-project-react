@@ -1,4 +1,5 @@
 import csv
+
 from django.db import Error
 from django.core.management.base import BaseCommand, CommandError
 
@@ -31,11 +32,13 @@ class Command(BaseCommand):
                         Ingredient.objects.create(
                             name=ingredient[0], measurement_unit=ingredient[1])
                     self.stdout.write(self.style.SUCCESS(
-                        'File ingredients.csv uploaded in database successfully'
+                        'File ingredients.csv uploaded '
+                        'in database successfully'
                     ))
                 except Error:
                     raise CommandError(
-                        'Some error occurred while creating the object "ingredient"'
+                        'Some error occurred while '
+                        'creating the object "ingredient"'
                     )
 
         if options['tags']:
