@@ -3,10 +3,22 @@ from django.core.validators import MinValueValidator
 
 from users.models import User
 
+CHOICES = [
+    ('#FFA500', 'orange'),
+    ('#008000', 'green'),
+    ('#800080', 'purple'),
+    ('#FF0000', 'red'),
+    ('#FFFF00', 'yellow'),
+    ('#0000FF', 'blue'),
+    ('#C0C0C0', 'silver'),
+    ('#000000', 'black')
+]
+
 
 class Tag(models.Model):
     name = models.CharField('Название', max_length=50)
-    hex_color = models.CharField('Цвет', max_length=7)
+    hex_color = models.CharField(
+        'Цвет', max_length=7, choices=CHOICES, default='#000000')
     slug = models.SlugField('Адрес', max_length=200)
 
     class Meta:
@@ -115,7 +127,7 @@ class Favorites(models.Model):
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE,
         related_name='favorites',
-        verbose_name="Рецепт"
+        verbose_name='Рецепт'
     )
 
     class Meta:

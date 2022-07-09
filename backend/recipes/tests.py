@@ -7,7 +7,7 @@ from backend.settings import MEDIA_ROOT
 from recipes.models import Tag, Ingredient, Recipe, IngredientAmount
 from users.models import User
 
-small_gif = (
+SMALL_GIF = (
     b'\x47\x49\x46\x38\x39\x61\x02\x00'
     b'\x01\x00\x80\x00\x00\x00\x00\x00'
     b'\xFF\xFF\xFF\x21\xF9\x04\x00\x00'
@@ -21,14 +21,22 @@ class ModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.superuser = User.objects.create_user(
-            username="admin", email="admin@example.com",
-            first_name="Иван", last_name="Иванов",
-            is_active=True, is_staff=True, is_admin=True,
+            username="admin",
+            email="admin@example.com",
+            first_name="Иван",
+            last_name="Иванов",
+            is_active=True,
+            is_staff=True,
+            is_admin=True,
         )
         cls.user = User.objects.create_user(
-            username="user", email="user@example.com",
-            first_name="Алексей", last_name="Алексеев",
-            is_active=True, is_staff=False, is_admin=False,
+            username="user",
+            email="user@example.com",
+            first_name="Алексей",
+            last_name="Алексеев",
+            is_active=True,
+            is_staff=False,
+            is_admin=False,
         )
 
         cls.tag = Tag.objects.create(
@@ -41,8 +49,9 @@ class ModelTest(TestCase):
             author=cls.user,
             name="Recipe",
             image=f"data:image/png;base64,"
-                  f"{base64.b64encode(small_gif).decode('utf-8')}",
-            text="Description", cooking_time=60
+                  f"{base64.b64encode(SMALL_GIF).decode('utf-8')}",
+            text="Description",
+            cooking_time=60
         )
         cls.recipe.tags.set([cls.tag])
         cls.ingredient_amount = IngredientAmount.objects.create(

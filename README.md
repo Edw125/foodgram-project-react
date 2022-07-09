@@ -123,6 +123,11 @@ curl -L https://raw.githubusercontent.com/wmnnd/nginx-certbot/master/init-letsen
 ```bash
 ./init-letsencrypt.sh
 ```
+* Чтобы залить в базу данные, введите команды:
+```bash
+docker-compose exec backend python manage.py filling --tags
+docker-compose exec backend python manage.py filling --ingredients
+```
 Готово! 
 
 ## Авторы

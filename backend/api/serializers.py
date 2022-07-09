@@ -9,15 +9,15 @@ from users.serializers import CustomUserSerializer
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = '__all__'
-        read_only_fields = '__all__',
+        fields = ('id', 'name', 'hex_color', 'slug')
+        read_only_fields = ('id', 'name', 'hex_color', 'slug')
 
 
 class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingredient
-        fields = '__all__'
-        read_only_fields = '__all__',
+        fields = ('id', 'name', 'measurement_unit')
+        read_only_fields = ('id', 'name', 'measurement_unit')
 
 
 class IngredientAmountSerializer(serializers.ModelSerializer):
@@ -94,9 +94,13 @@ class RecipeSerializer(serializers.ModelSerializer):
                 })
             ingredients_list.append(ingredient_id)
             amount = ingredient['amount']
-            if int(amount) <= 0:
+            if int(amount) < 0:
                 raise serializers.ValidationError({
                     'amount': 'Количество ингредиента должно быть больше нуля!'
+                })
+            if int(amount) == 0:
+                raise serializers.ValidationError({
+                    'amount': 'Укажите хотя бы один ингредиент!'
                 })
 
         tags = data['tags']
