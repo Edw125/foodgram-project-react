@@ -80,6 +80,14 @@ class RecipesViewSet(ModelViewSet):
     @action(detail=True, methods=["POST"],
             permission_classes=[IsAuthenticated])
     def shopping_cart(self, request, pk):
+        if ShoppingCart.objects.filter(
+                user=request.user,
+                recipe=pk
+        ).exists():
+            return Response(
+                {'error': 'Рецепт уже добавлен в список покупок'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
         return self.post_method_for_actions(
             request=request, pk=pk, serializers=ShoppingCartSerializer)
 
@@ -113,11 +121,11 @@ class RecipesViewSet(ModelViewSet):
         return create_pdf(response, item_list)
 
 
-def create_pdf(response, item_list):
+def create_pdf(obj, item_list):
     pdfmetrics.registerFont(TTFont(
         'TimesNewRoman', MEDIA_ROOT + '/data/TimesNewRoman.ttf', 'UTF-8'
     ))
-    page = canvas.Canvas(response)
+    page = canvas.Canvas(obj)
     page.setFont('TimesNewRoman', size=20)
     page.drawString(250, 780, 'Список покупок')
     page.setFont('TimesNewRoman', size=12)
@@ -128,4 +136,4 @@ def create_pdf(response, item_list):
         height -= 25
     page.showPage()
     page.save()
-    return response
+    return obj
