@@ -174,17 +174,20 @@ class FavoriteSerializer(serializers.ModelSerializer):
         if not request or request.user.is_anonymous:
             return False
         recipe = data['recipe']
-        if Favorites.objects.filter(user=request.user, recipe=recipe).exists():
-            raise serializers.ValidationError({
-                'status': 'Рецепт уже есть в избранном!'
-            })
+        if Favorites.objects.filter(
+                user=request.user, recipe=recipe
+        ).exists():
+            raise serializers.ValidationError(
+                {'status': 'Рецепт уже есть в избранном!'}
+            )
         return data
 
     def to_representation(self, instance):
         request = self.context.get('request')
         context = {'request': request}
         return ShortRecipeSerializer(
-            instance.recipe, context=context).data
+            instance.recipe, context=context
+        ).data
 
 
 class ShoppingCartSerializer(serializers.ModelSerializer):
@@ -196,4 +199,5 @@ class ShoppingCartSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         context = {'request': request}
         return ShortRecipeSerializer(
-            instance.recipe, context=context).data
+            instance.recipe, context=context
+        ).data
