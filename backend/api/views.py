@@ -31,17 +31,17 @@ class TagsViewSet(ReadOnlyModelViewSet):
 
 class IngredientsViewSet(ReadOnlyModelViewSet):
     queryset = Ingredient.objects.all()
-    permission_classes = (AllowAny, )
+    permission_classes = (AllowAny,)
     serializer_class = IngredientSerializer
-    filter_backends = [IngredientSearchFilter]
+    filter_backends = (IngredientSearchFilter,)
     search_fields = ('^name',)
     pagination_class = None
 
 
 class RecipesViewSet(ModelViewSet):
     queryset = Recipe.objects.all()
-    permission_classes = [IsAuthorOrReadOnly]
-    filter_backends = [DjangoFilterBackend]
+    permission_classes = (IsAuthorOrReadOnly,)
+    filter_backends = (DjangoFilterBackend,)
     filterset_class = RecipeFilter
     pagination_class = CustomPageNumberPagination
 
