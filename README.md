@@ -91,14 +91,6 @@ docker-compose up -d --build
 ```bash
 docker-compose exec backend python manage.py migrate
 ```
-* Загрузите ингредиенты:
-```bash
-docker-compose exec backend python manage.py load_ingrs
-```
-* Загрузите теги:
-```bash
-docker-compose exec backend python manage.py load_tags
-```
 * Создайте администратора:
 ```bash
 docker-compose exec backend python manage.py createsuperuser
